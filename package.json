@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  },
+  "name": "nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon --inspect index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Khuongduy01/Nodejs-Sever-Demo.git"
+  },
+  "author": "KhuongDuy2406",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Khuongduy01/Nodejs-Sever-Demo/issues"
+  },
+  "homepage": "https://github.com/Khuongduy01/Nodejs-Sever-Demo#readme",
+  "description": ""
+}
