@@ -1,14 +1,17 @@
 {
   "dependencies": {
     "express": "^4.18.2",
+    "express-handlebars": "^7.0.4",
+    "morgan": "^1.10.0",
+    "node-sass": "^8.0.0",
     "nodemon": "^2.0.22"
   },
   "name": "nodejs",
   "version": "1.0.0",
-  "main": "index.js",
-  "devDependencies": {},
+  "main": "src/index.js",
   "scripts": {
-    "start": "nodemon --inspect index.js",
+    "start": "nodemon --inspect src/index.js",
+    "watch": "node-sass --watch src/resources/scss/ --output src/public/css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
