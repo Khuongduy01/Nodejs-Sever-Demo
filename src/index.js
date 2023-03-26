@@ -1,23 +1,28 @@
-const path = require('path');
-const express = require('express');
+const path = require("path");
+const express = require("express");
 const app = express();
-const handlebars = require('express-handlebars');
-const { request } = require('http');
+const handlebars = require("express-handlebars");
+const { request } = require("http");
+const db = require("./config/db");
 const port = 3000;
-const route = require('./routes/index');
+const route = require("./routes/index");
+
+// Connect  to DB
+db.connect();
+// Connect  to DB
 
 //static file link -- file tĩnh
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
 //static file link -- file tĩnh
 
 // sử lí dữ liệu submit với phương thức Post
 
 app.use(
-    express.urlencoded({
-        extended: true,
-    }),
+  express.urlencoded({
+    extended: true,
+  })
 );
 
 // sử lí dữ liệu submit với phương thức Post
@@ -30,14 +35,14 @@ app.use(express.json());
 
 //template engine  == express handlebars
 app.engine(
-    'hbs',
-    handlebars.engine({
-        extname: '.hbs',
-    }),
+  "hbs",
+  handlebars.engine({
+    extname: ".hbs",
+  })
 );
-app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources/views'));
-console.log(path.join(__dirname, 'resources/views'));
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "resources", "views"));
+console.log(path.join(__dirname, "resources", "views"));
 
 // path.join(__dirname, 'resources/views') === C:\Users\khuon\WORK\Duy\Nodejs\src\resources\views
 
@@ -48,7 +53,7 @@ route(app);
 // wed server start
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+  console.log(`Example app listening on port ${port}`);
 });
 
 // wed server start
