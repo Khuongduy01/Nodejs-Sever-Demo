@@ -28,6 +28,29 @@ class CoursesController {
       })
       .catch(next);
   }
+
+  // [GET] /courses/:id/edit
+  edit(rep, res, next) {
+    Course.findById(rep.params.id)
+      .then((courses) => {
+        console.log(courses);
+        res.render("courses/edit", { course: MongooseOj(courses) });
+      })
+      .catch(next);
+  }
+
+  // [PUT] /courses/:id
+  update(rep, res, next) {
+    Course.updateOne({ _id: rep.params.id }, rep.body)
+      .then(() => res.redirect("/me/stored/courses"))
+      .catch(next);
+  }
+  // [DELETE] /courses/:id
+  delete(rep, res, next) {
+    Course.deleteOne({ _id: rep.params.id })
+      .then(() => res.redirect("back"))
+      .catch(next);
+  }
 }
 
 module.exports = new CoursesController();

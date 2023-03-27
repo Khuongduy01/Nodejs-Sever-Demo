@@ -2,6 +2,7 @@ const path = require("path");
 const express = require("express");
 const app = express();
 const handlebars = require("express-handlebars");
+const methodOverride = require("method-override");
 const { request } = require("http");
 const db = require("./config/db");
 const port = 3000;
@@ -27,6 +28,12 @@ app.use(
 
 // sử lí dữ liệu submit với phương thức Post
 
+// Thay đổi phương thức submit gửi lên server từ form html
+
+app.use(methodOverride("_method"));
+
+// Thay đổi phương thức submit gửi lên server từ form html
+
 // sử lí dữ liệu gửi lên bằng fetch ,axios .... json ...
 
 app.use(express.json());
@@ -38,6 +45,11 @@ app.engine(
   "hbs",
   handlebars.engine({
     extname: ".hbs",
+    helpers: {
+      sum: (a, b) => {
+        return a + b;
+      },
+    },
   })
 );
 app.set("view engine", "hbs");
